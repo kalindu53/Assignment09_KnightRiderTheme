@@ -88,16 +88,24 @@
 
 
   }
-  setInterval(updateLight,100);
+  // setInterval(updateLight,100);
 
-
-        $('start').on('click',function (){
-            intervalId = setInterval(updateLight,100);
-        });
-
-  $('stop').on('click',function (){
-            clearInterval(intervalId)
+  //
+  //       $('start').on('click',function (){
+  //           intervalId = setInterval(updateLight,100);
+  //       });
+  //
+  // $('stop').on('click',function (){
+  //           clearInterval(intervalId)
+  // });
+  $("#start").on("click",function (){
+      intervalId=setInterval(updateLight,200);
   });
+
+  $("#stop").on("click",function (){
+      clearInterval(intervalId);
+  });
+
 
 
 </script>
