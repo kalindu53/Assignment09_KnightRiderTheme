@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <style>
+    body{
+      display: flex;
+      background-color:black ;
+      justify-content: center;
+      align-items: center;
+      /*justify-items: center;*/
+      flex-direction: column;
+
+
+    }
+
+    #kitt{
+      margin-top: 200px;
+        display: flex;
+      gap: 2px;
+
+
+    }
+    body>section>div{
+      width: 100px;
+      height: 50px;
+      border: 2px solid red;
+
+    }
+
+  </style>
+</head>
+<body>
+
+
+    <section id="kitt">
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+
+    </section>
+
+  <section>
+    <button id="start">Start</button>
+    <button id="stop">end</button>
+  </section>
+
+
+<script>
+  const light_count =6;
+  let current_light = -1;
+  let direction = "Right"; //Right, Left
+
+
+  updateLight = () =>{
+
+
+    if (direction === "Right"){
+
+      current_light++;
+      $(".light").css("background","black");
+      $(".light").eq(current_light).css("background","red");
+        $(".light").eq(current_light-1).css("background","pink");
+
+      if(current_light==light_count-1){
+          direction= "Left"
+      }
+
+
+
+    }else {
+      current_light--;
+      $(".light").css("background","black");
+      $(".light").eq(current_light).css("background","red");
+        $(".light").eq(current_light+1).css("background","pink");
+
+
+        if(current_light==0){
+            direction="Right"
+        }
+    }
+
+
+  }
+  setInterval(updateLight,100);
+
+
+        $('start').on('click',function (){
+            intervalId = setInterval(updateLight,100);
+        });
+
+  $('stop').on('click',function (){
+            clearInterval(intervalId)
+  });
+
+
+</script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</body>
+</html>

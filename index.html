@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KITT Light Animation</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        /* Resetting the body */
+        body {
+            margin: 0;
+            height: 100vh;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* KITT light container */
+        .kitt-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Individual lights */
+        .light {
+            width: 30px;
+            height: 30px;
+            background-color: rgba(255, 0, 0, 0.2);
+
+            box-shadow: 0 0 5px rgba(255, 0, 0, 0.4);
+        }
+
+        /* Active light styling */
+        .active {
+            background-color: red;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+        }
+
+    </style>
+
+
+
+</head>
+
+<body>
+<div class="kitt-container">
+    <div class="light" id="light1"></div>
+    <div class="light" id="light2"></div>
+    <div class="light" id="light3"></div>
+    <div class="light" id="light4"></div>
+    <div class="light" id="light5"></div>
+    <div class="light" id="light6"></div>
+    <div class="light" id="light7"></div>
+</div>
+
+
+
+<script>
+    $(document).ready(function () {
+        let lights = $(".light");
+        let index = 0;
+        let direction = 1; // 1 for forward, -1 for backward
+
+        function animateLights() {
+            lights.removeClass("active");
+            $(lights[index]).addClass("active");
+
+            // Update the index based on the direction
+            index += direction;
+
+            // Reverse direction at the ends
+            if (index === lights.length - 1 || index === 0) {
+                direction *= -1;
+            }
+        }
+
+        // Call animateLights every 100ms to create the moving effect
+        setInterval(animateLights, 100);
+    });
+
+</script>
+</body>
+</html>
